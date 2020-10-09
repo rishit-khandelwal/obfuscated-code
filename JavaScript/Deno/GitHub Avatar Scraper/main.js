@@ -1,0 +1,1 @@
+(await fetch(`https://api.github.com/users/${Deno.args[0]}`)).json().then( async (json) => { Deno.writeFileSync(Deno.args[0]+".png",(await (await (await fetch(json["avatar_url"])).blob()).stream().getReader().read()).value); } )
